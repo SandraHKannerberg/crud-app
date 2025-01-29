@@ -1,5 +1,4 @@
 /* CSS RESET*/
-
 *,
 *::before,
 *::after {
@@ -9,11 +8,6 @@
 * {
   margin: 0;
   padding: 0;
-}
-
-/* min body height */
-body {
-  min-height: 100vh;
 }
 
 /* responsive images/videos */
@@ -30,6 +24,40 @@ video {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+/* VARIABLES */
+:root {
+  --space-base: 1.3rem;
+  --space-small: 1rem;
+  --space-medium: 2rem;
+}
+
+body {
+  min-height: 100vh;
+  padding: var(--space-small);
+}
+
+main {
+  margin-block: var(--space-medium);
+}
+
+#search-container,
+#music-container {
+  margin-block: var(--space-medium);
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.artist-input,
+.type-select,
+.search-limit {
+  display: flex;
+  flex-direction: column;
+  margin-block: var(--space-base);
 }
 
 .search-item {
