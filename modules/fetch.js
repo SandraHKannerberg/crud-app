@@ -1,38 +1,33 @@
-// import {
-//   saveListToLS,
-//   SEARCH_KEY,
-//   searchResultList,
-//   ARTISTS_KEY,
-// } from "./localStorage.js";
-
 import { renderSearchResults } from "./render.js";
 
 // API base url
 const baseURL = "https://musicbrainz.org/ws/2/";
 
-// CATCH THE SEARCH QUERY AND RENDER THE RESULTS TO THE UI
-export async function fetchArtist(query) {
+export async function fetchSearchResults(resource, query = {}) {
+  // Customise the query format
+  if (query.query) {
+    query.query = `artist:${query.query} AND type:${query.type}`;
+    delete query.type; // Remove 'type' since it's now part of 'query' in the API
+  }
+
+  const params = new URLSearchParams(query).toString();
+
   try {
-    const response = await fetch(
-      baseURL + "artist?query=" + query + "&limit=5",
-      {
-        headers: { Accept: "application/json" },
-      }
-    );
+    const response = await fetch(`${baseURL}${resource}?${params}`, {
+      headers: {
+        Accept: "application/json",
+      },
+    });
 
     if (!response.ok) {
-      throw new Error(`HTTP error, status code: ${response.status}`);
+      throw new Error(`HTTP error with status code: ${response.status}`);
     }
-
     const artistData = await response.json();
     const searchResults = artistData.artists;
 
-    // SAVE OR NOT SAVE TO LS??
-    // searchResultList.push(searchResults);
-    // saveListToLS(SEARCH_KEY, searchResults);
-
+    // Render the searchresults to the UI
     renderSearchResults(searchResults);
   } catch (error) {
-    console.error("An error occurred");
+    console.error(error);
   }
 }
