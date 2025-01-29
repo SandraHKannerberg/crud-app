@@ -1,4 +1,8 @@
-import { addArtistToCollection, deleteArtistFromCollection } from "./crud.js";
+import {
+  addArtistToCollection,
+  deleteArtistFromCollection,
+  updateArtist,
+} from "./crud.js";
 
 // DOM references
 const searchResultUlElem = document.querySelector(".search-result-list");
@@ -26,18 +30,14 @@ export function renderSearchResults(array) {
     textElem.textContent = a.type;
     searchResultLiElem.appendChild(textElem);
 
-    // SHOW OR NOT SHOW IN THE SEARCHLIST??
-    // a.gender -- person
-    // a.country -- person
-
     // Button to add the artist to your artist-collection
     const addBtnElem = document.createElement("button");
     addBtnElem.textContent = "Add";
     searchResultLiElem.appendChild(addBtnElem);
 
-    // Eventlistener
+    // Eventlistener - add
     addBtnElem.addEventListener("click", () => {
-      addArtistToCollection(a.id);
+      addArtistToCollection(a);
     });
   });
 }
@@ -61,16 +61,22 @@ export function renderArtistCollection(array) {
     cardImgElem.setAttribute("alt", "The image shows one half of an LP disc");
     artistCardElem.appendChild(cardImgElem);
 
-    // Heart icon -- add later
-    const favouriteIconElem = document.createElement("i");
-    // favouriteIconElem.className = "fa-solid fa-heart" || "fa-regular fa-heart";
-    favouriteIconElem.className = "fa-regular fa-heart";
-    artistCardElem.appendChild(favouriteIconElem);
+    // Button with heart icon -- mark an artist as a favourite
+    const favouriteBtnElem = document.createElement("button");
+    artistCardElem.appendChild(favouriteBtnElem);
+
+    favouriteBtnElem.innerHTML = a.isFavourite
+      ? "<i class='fa-solid fa-heart'></i>"
+      : "<i class='fa-regular fa-heart'></i>";
+
+    // Eventlistener - update
+    favouriteBtnElem.addEventListener("click", () => {
+      updateArtist(a.id);
+    });
 
     // Link -- artist name
     const artistLinkElem = document.createElement("a");
     artistLinkElem.textContent = a.name;
-    // FIXA HREF SENARE
     artistLinkElem.setAttribute("href", "/about.html");
     artistLinkElem.setAttribute("target", "_blank");
     artistLinkElem.className = "artist-link";
@@ -80,7 +86,7 @@ export function renderArtistCollection(array) {
     delBtnElem.textContent = "Delete";
     artistCardElem.appendChild(delBtnElem);
 
-    // Eventlistener
+    // Eventlistener - delete
     delBtnElem.addEventListener("click", () => {
       deleteArtistFromCollection(a.id);
     });

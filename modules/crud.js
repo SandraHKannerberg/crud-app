@@ -8,18 +8,21 @@ import { renderArtistCollection } from "./render.js";
 let artistsList = [];
 artistsList = loadArtistsFromLS(ARTISTS_KEY);
 
-export function addArtistToCollection(id) {
+// ADD ARTIST TO COLLECTION
+export function addArtistToCollection(artist) {
   // Check if the artist already in the collection
   const artistAlreadyListed = artistsList.find(
-    (listedArtist) => listedArtist.id === id
+    (listedArtist) => listedArtist.id === artist.id
   );
 
   if (!artistAlreadyListed) {
-    // Få med isFavourite propertyn på artistobjektet innan det sparas till listan och LS!!!!!!! = ska kunna markera artister man tycker om extra mycket med hjälp av en ikon t.ex ett hjärta. Alla ska ha ett outline hjärta men om isFavourite = true är hjärtat ifyllt
+    // Add boolean isFavourite with default value false
+    artist.isFavourite = false;
 
     // Add the artist object to the array and save to local storage
-    artistsList.push(a);
+    artistsList.push(artist);
     saveListToLS(ARTISTS_KEY, artistsList);
+    alert("Successfully added to the collection"); // IF TIME; FIX A POPUP OR MODAL INSTEAD
   } else {
     alert("Artist is already in your collection"); // IF TIME; FIX A POPUP OR MODAL INSTEAD
   }
@@ -28,8 +31,9 @@ export function addArtistToCollection(id) {
   renderArtistCollection(artistsList);
 }
 
+// DELETE ARTIST FROM COLLECTION
 export function deleteArtistFromCollection(id) {
-  // Check if the artist already in the collection
+  // Find the artist in the collection
   const artistToDelete = artistsList.find(
     (artistToDelete) => artistToDelete.id === id
   );
@@ -50,4 +54,22 @@ export function deleteArtistFromCollection(id) {
     // Render updated artist-collection
     renderArtistCollection(artistsList);
   }
+}
+
+// UPDATE ARTIST
+export function updateArtist(id) {
+  // Find the artist in the collection
+  const artistToUpdate = artistsList.find(
+    (artistToUpdate) => artistToUpdate.id === id
+  );
+
+  /// Find the index
+  const index = artistsList.indexOf(artistToUpdate);
+
+  // Change the boolean isFavourite
+  artistToUpdate.isFavourite = !artistToUpdate.isFavourite;
+
+  // // Update and save to local storage
+  artistsList.splice(index, 1, artistToUpdate);
+  saveListToLS(ARTISTS_KEY, artistsList);
 }
