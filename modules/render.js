@@ -35,7 +35,7 @@ export function renderSearchResults(array) {
     addBtnElem.textContent = "Add";
     searchResultLiElem.appendChild(addBtnElem);
 
-    // Eventlistener - add
+    // Eventlistener -- add
     addBtnElem.addEventListener("click", () => {
       addArtistToCollection(a);
     });
@@ -69,7 +69,7 @@ export function renderArtistCollection(array) {
       ? "<i class='fa-solid fa-heart'></i>"
       : "<i class='fa-regular fa-heart'></i>";
 
-    // Eventlistener - update
+    // Eventlistener -- update
     favouriteBtnElem.addEventListener("click", () => {
       updateArtist(a.id);
     });
@@ -77,7 +77,8 @@ export function renderArtistCollection(array) {
     // Link -- artist name
     const artistLinkElem = document.createElement("a");
     artistLinkElem.textContent = a.name;
-    artistLinkElem.setAttribute("href", "/about.html");
+    // Add the link here
+    // artistLinkElem.setAttribute("href", "");
     artistLinkElem.setAttribute("target", "_blank");
     artistLinkElem.className = "artist-link";
 
@@ -86,7 +87,7 @@ export function renderArtistCollection(array) {
     delBtnElem.textContent = "Delete";
     artistCardElem.appendChild(delBtnElem);
 
-    // Eventlistener - delete
+    // Eventlistener -- delete
     delBtnElem.addEventListener("click", () => {
       deleteArtistFromCollection(a.id);
     });

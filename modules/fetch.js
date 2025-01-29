@@ -25,11 +25,6 @@ export async function fetchSearchResults(resource, query = {}) {
     const artistData = await response.json();
     const searchResults = artistData.artists;
 
-    // Give every artist the property isFavourite
-    // searchResults.forEach((artist) => {
-    //   artist.isFavourite = false;
-    // });
-
     // Render the searchresults to the UI
     renderSearchResults(searchResults);
   } catch (error) {
