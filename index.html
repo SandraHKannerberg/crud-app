@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,19 +9,26 @@
   </head>
   <body>
     <header>
-      <h1>Musik ska byggas utav glädje</h1>
+      <h1>Thank you for the music</h1>
     </header>
     <main>
-      <form id="search-form">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Sök på artist..."
-          required
-        />
-        <button type="submit">Sök</button>
-      </form>
-      <section id="music-container"></section>
+      <section id="search-container">
+        <h2>Search</h2>
+        <form id="search-form">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search..."
+            required
+          />
+          <button type="submit">Search</button>
+        </form>
+        <!-- table istället FÖR UL??? -->
+        <ul role="list " class="search-result-list"></ul>
+      </section>
+      <section id="music-container">
+        <h2>My artists collection</h2>
+      </section>
     </main>
   </body>
 </html>

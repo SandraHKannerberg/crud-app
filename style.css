@@ -1,0 +1,37 @@
+/* CSS RESET*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* min body height */
+body {
+  min-height: 100vh;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Remove list style */
+[role="list"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-item {
+  display: flex;
+}
