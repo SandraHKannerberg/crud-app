@@ -6,10 +6,16 @@ export const SEARCH_KEY = "SEARCH";
 export let artistsList = [];
 export let searchResultList = [];
 
+// Load search from local storage -- BARA UNDER UTVECKLING _ TA BORT SEN!!!!!!!
+export function loadSearchListFromLS(SEARCH_KEY) {
+  const data = localStorage.getItem(SEARCH_KEY);
+  return (searchResultList = data ? JSON.parse(data) : []);
+}
+
 // Load from local storage
-export function loadListFromLS(key) {
-  const data = localStorage.getItem(key);
-  return (list = data ? JSON.parse(data) : []);
+export function loadArtistsFromLS(ARTISTS_KEY) {
+  const data = localStorage.getItem(ARTISTS_KEY);
+  return (artistsList = data ? JSON.parse(data) : []);
 }
 
 // Save to local storage
