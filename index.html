@@ -15,12 +15,27 @@
       <section id="search-container">
         <h2>Search</h2>
         <form id="search-form">
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Search..."
-            required
-          />
+          <label for="artist-input" class="artist-input"
+            >Search for an artist
+            <input
+              type="text"
+              id="artist-input"
+              placeholder="Artist..."
+              required
+            />
+          </label>
+          <label for="type" class="type-select"
+            >Group or Person
+            <select name="type" id="type">
+              <option value="" disabled selected>--</option>
+              <option value="Group">Group</option>
+              <option value="Person">Person</option>
+            </select>
+          </label>
+          <label for="search-limit" class="search-limit"
+            >Limit your search? 10 by default
+            <input type="number" id="search-limit" placeholder="Limit..."
+          /></label>
           <button type="submit">Search</button>
         </form>
         <!-- table istället FÖR UL??? -->
