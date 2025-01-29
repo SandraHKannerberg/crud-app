@@ -1,14 +1,8 @@
 // Import modules
 import { fetchSearchResults } from "./modules/fetch.js";
+import { renderArtistCollection } from "./modules/render.js";
 
-// import {
-//   saveListToLS,
-//   ARTISTS_KEY,
-//   artistsList,
-//   SEARCH_KEY,
-//   searchResultList,
-//   loadListFromLS,
-// } from "./modules/localStorage.js";
+import { ARTISTS_KEY, loadArtistsFromLS } from "./modules/localStorage.js";
 
 // DOM references
 const formElem = document.getElementById("search-form");
@@ -16,7 +10,10 @@ const artistInputElem = document.getElementById("artist-input");
 const typeSelectElem = document.getElementById("type");
 const limitInputElem = document.getElementById("search-limit");
 
-// const musicContainerElem = document.getElementById("music-container");
+let artistsList = [];
+artistsList = loadArtistsFromLS(ARTISTS_KEY);
+
+renderArtistCollection(artistsList);
 
 // Eventlistener -- form-submit
 formElem.addEventListener("submit", async (event) => {
