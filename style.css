@@ -60,6 +60,31 @@ main {
   margin-block: var(--space-base);
 }
 
-.search-item {
-  display: flex;
+.search-result-list {
+  max-width: 50vw;
+  margin-block: var(--space-medium);
+  display: grid;
+  gap: var(--space-base);
+
+  li.search-item {
+    width: 100%;
+    border: 3px solid red;
+    display: grid;
+    grid-template-columns: 1fr 1fr 5em;
+    gap: 1rem;
+  }
+}
+
+#music-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-medium);
+
+  h2 {
+    grid-column: span 3;
+  }
+
+  .artist-card {
+    border: 3px solid black;
+  }
 }
