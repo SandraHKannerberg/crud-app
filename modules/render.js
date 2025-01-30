@@ -68,20 +68,6 @@ export function renderArtistCollection(array) {
     cardImgElem.setAttribute("alt", "The image shows one half of an LP disc");
     artistCardElem.appendChild(cardImgElem);
 
-    // Button with heart icon -- mark an artist as a favourite
-    const favouriteBtnElem = document.createElement("button");
-    artistCardElem.appendChild(favouriteBtnElem);
-
-    // Förbättra denna, måste uppdatera sidan för att ändringen ska synas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    favouriteBtnElem.innerHTML = a.isFavourite
-      ? "<i class='fa-solid fa-heart'></i>"
-      : "<i class='fa-regular fa-heart'></i>";
-
-    // Eventlistener -- update
-    favouriteBtnElem.addEventListener("click", () => {
-      updateArtist(a.id);
-    });
-
     // H3 and Link -- artist name
     const artistNameElem = document.createElement("h3");
     artistNameElem.className = "artist-name";
@@ -94,9 +80,25 @@ export function renderArtistCollection(array) {
     artistLinkElem.className = "artist-link";
     artistNameElem.appendChild(artistLinkElem);
 
+    // Button with heart icon -- mark an artist as a favourite
+    const favouriteBtnElem = document.createElement("button");
+    favouriteBtnElem.className = "favourite-btn";
+    artistCardElem.appendChild(favouriteBtnElem);
+
+    // Förbättra denna, måste uppdatera sidan för att ändringen ska synas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    favouriteBtnElem.innerHTML = a.isFavourite
+      ? "<i class='fa-solid fa-heart'></i>"
+      : "<i class='fa-regular fa-heart'></i>";
+
+    // Eventlistener -- update
+    favouriteBtnElem.addEventListener("click", () => {
+      updateArtist(a.id);
+    });
+
     // Button to delete an artist
     const delBtnElem = document.createElement("button");
-    delBtnElem.textContent = "Delete";
+    delBtnElem.innerHTML = "<i class='fa-solid fa-xmark'></i>";
+    delBtnElem.className = "del-btn";
     artistCardElem.appendChild(delBtnElem);
 
     // Eventlistener -- delete
