@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+
 /* CSS RESET*/
 *,
 *::before,
@@ -28,28 +30,118 @@ video {
 
 /* VARIABLES */
 :root {
+  --clr-primary: #efefeb;
+  --clr-secondary: #181618;
+
   --space-base: 1.3rem;
   --space-small: 1rem;
   --space-medium: 2rem;
+
+  --font-fam-primary: "Inconsolata", serif;
+  --font-fam-secondary: "Karla", serif;
+  --font-size-base: 1rem;
+  --font-size-super-xl: 8rem;
+  --font-weight-base: 400;
+  --font-weight-thin: 200;
+  --font-weight-bold: 700;
+  --font-style-base: normal;
+  --font-style-italic: italic;
 }
 
 body {
   min-height: 100vh;
-  padding: var(--space-small);
+  background-color: var(--clr-primary);
+  color: var(--clr-secondary);
+  font-family: var(--font-fam-primary);
+  font-weight: var(--font-weight-base);
+  font-style: var(--font-style-base);
+}
+
+header.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  min-height: 90vh;
+
+  .text-container {
+    grid-row: span 2;
+    background-color: var(--clr-secondary);
+    color: var(--clr-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img-container {
+    grid-row: span 2;
+
+    img {
+      grid-row: span 1;
+      width: 100%;
+      height: 50%;
+      object-fit: cover;
+    }
+  }
+}
+
+h1 {
+  font-family: var(--font-fam-secondary);
+  text-align: center;
+  font-size: var(--font-size-super-xl);
+  font-weight: var(--font-weight-thin);
+  text-transform: uppercase;
+
+  .text-effect {
+    text-transform: none;
+    font-style: var(--font-style-italic);
+  }
+}
+
+h2 {
+  margin-bottom: var(--space-medium);
 }
 
 main {
   margin-block: var(--space-medium);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1224px;
+  margin-inline: auto;
 }
 
-#search-container,
-#music-container {
+#search-container {
   margin-block: var(--space-medium);
 }
 
-.search-form {
-  display: flex;
-  flex-direction: column;
+#search-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-base);
+  margin-block: var(--space-medium);
+  padding: var(--space-base);
+  border: 2px dotted var(--clr-secondary);
+  border-radius: 15px;
+
+  .search-btn {
+    height: 3rem;
+    background-color: var(--clr-secondary);
+    color: var(--clr-primary);
+    border: 2px solid var(--clr-secondary);
+    border-radius: 5px;
+    font-family: var(--font-fam-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    align-self: end;
+
+    &:hover {
+      color: var(--clr-secondary);
+      background-color: var(--clr-primary);
+    }
+  }
 }
 
 .artist-input,
@@ -57,21 +149,47 @@ main {
 .search-limit {
   display: flex;
   flex-direction: column;
-  margin-block: var(--space-base);
+  gap: var(--space-base);
+}
+
+input,
+select {
+  height: 3rem;
+  padding: 10px;
+  background-color: var(--clr-primary);
+  border: none;
+  border-bottom: 2px solid var(--clr-secondary);
 }
 
 .search-result-list {
-  max-width: 50vw;
   margin-block: var(--space-medium);
   display: grid;
   gap: var(--space-base);
 
   li.search-item {
     width: 100%;
-    border: 3px solid red;
     display: grid;
     grid-template-columns: 1fr 1fr 5em;
-    gap: 1rem;
+    gap: var(--space-base);
+
+    .add-btn {
+      padding-block: 0.5rem;
+      background-color: var(--clr-secondary);
+      color: var(--clr-primary);
+      border: 2px solid var(--clr-secondary);
+      border-radius: 5px;
+      font-family: var(--font-fam-primary);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--clr-secondary);
+        background-color: var(--clr-primary);
+      }
+    }
   }
 }
 
@@ -79,12 +197,20 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-medium);
+  margin-block: var(--space-medium);
 
   h2 {
     grid-column: span 3;
   }
 
   .artist-card {
-    border: 3px solid black;
+    border: 2px dotted var(--clr-secondary);
+    border-radius: 15px;
+    background-color: #ffffff;
+
+    img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
   }
 }

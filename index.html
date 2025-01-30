@@ -12,35 +12,58 @@
     <script type="module" src="./script.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1>Thank you for the music</h1>
+    <header class="hero">
+      <section class="text-container">
+        <h1>
+          Thank you for
+          <span class="text-effect">the music</span>
+        </h1>
+      </section>
+      <!-- Kolla upp om en figure kan agera som div för flera bilder eller om varje bild behöver sin egen figure -->
+      <figure class="img-container">
+        <img src="./assets/music-player.jpg" alt="Old music player" />
+        <img src="./assets/guitars.jpg" alt="Two guitars" />
+      </figure>
     </header>
     <main>
       <section id="search-container">
         <h2>Search</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
+          amet pariatur itaque blanditiis dolorum aliquam eveniet esse iste
+          nostrum temporibus eius dicta dolor illum, alias odio porro ex id
+          eaque.
+        </p>
         <form id="search-form">
           <label for="artist-input" class="artist-input"
             >Search for an artist
             <input
               type="text"
               id="artist-input"
-              placeholder="Artist..."
+              placeholder="Enter artist here..."
               required
             />
           </label>
           <label for="type" class="type-select"
-            >Group or Person
+            >Type
             <select name="type" id="type">
-              <option value="" disabled selected>--</option>
+              <option value="" disabled selected>
+                Choose group or a person
+              </option>
               <option value="Group">Group</option>
               <option value="Person">Person</option>
             </select>
           </label>
           <label for="search-limit" class="search-limit"
             >Limit your search? 10 by default
-            <input type="number" id="search-limit" placeholder="Limit..."
+            <input
+              type="number"
+              id="search-limit"
+              placeholder="Enter limit here..."
           /></label>
-          <button type="submit">Search</button>
+          <button type="submit" class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
         </form>
         <!-- table istället FÖR UL??? -->
         <ul role="list " class="search-result-list"></ul>
