@@ -39,7 +39,7 @@ video {
 
   --font-fam-primary: "Inconsolata", serif;
   --font-fam-secondary: "Karla", serif;
-  --font-size-base: 1rem;
+  --font-size-base: 1.2rem;
   --font-size-super-xl: 8rem;
   --font-weight-base: 400;
   --font-weight-thin: 200;
@@ -55,13 +55,14 @@ body {
   font-family: var(--font-fam-primary);
   font-weight: var(--font-weight-base);
   font-style: var(--font-style-base);
+  font-size: var(--font-size-base);
 }
 
 header.hero {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: repeat(2, 1fr);
-  min-height: 90vh;
+  min-height: 100vh;
 
   .text-container {
     grid-row: span 2;
@@ -76,7 +77,6 @@ header.hero {
     grid-row: span 2;
 
     img {
-      grid-row: span 1;
       width: 100%;
       height: 50%;
       object-fit: cover;
@@ -90,15 +90,11 @@ h1 {
   font-size: var(--font-size-super-xl);
   font-weight: var(--font-weight-thin);
   text-transform: uppercase;
-
-  .text-effect {
-    text-transform: none;
-    font-style: var(--font-style-italic);
-  }
 }
 
-h2 {
-  margin-bottom: var(--space-medium);
+.text-effect {
+  text-transform: none;
+  font-style: var(--font-style-italic);
 }
 
 main {
@@ -111,20 +107,43 @@ main {
 }
 
 #search-container {
+  gap: var(--space-base);
   margin-block: var(--space-medium);
+
+  h2 {
+    grid-column: span 2;
+    margin-bottom: var(--space-medium);
+    font-family: var(--font-fam-secondary);
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+
+  .img-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-base);
+    margin-top: 3rem;
+
+    img {
+      border-radius: 15px;
+      object-fit: cover;
+      aspect-ratio: 1;
+    }
+  }
 }
 
 #search-form {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-base);
-  margin-block: var(--space-medium);
   padding: var(--space-base);
   border: 2px dotted var(--clr-secondary);
   border-radius: 15px;
+  margin-bottom: 4rem;
 
   .search-btn {
     height: 3rem;
+    width: 100%;
     background-color: var(--clr-secondary);
     color: var(--clr-primary);
     border: 2px solid var(--clr-secondary);
@@ -159,12 +178,18 @@ select {
   background-color: var(--clr-primary);
   border: none;
   border-bottom: 2px solid var(--clr-secondary);
+  font-family: var(--font-fam-primary);
+
+  &::placeholder {
+    color: var(--clr-secondary);
+    font-family: var(--font-fam-primary);
+  }
 }
 
 .search-result-list {
-  margin-block: var(--space-medium);
   display: grid;
   gap: var(--space-base);
+  width: 50vw;
 
   li.search-item {
     width: 100%;
@@ -198,10 +223,6 @@ select {
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-medium);
   margin-block: var(--space-medium);
-
-  h2 {
-    grid-column: span 3;
-  }
 
   .artist-card {
     border: 2px dotted var(--clr-secondary);
@@ -252,10 +273,13 @@ select {
   background-color: var(--clr-secondary);
   color: var(--clr-primary);
   grid-column: span 3;
+  margin-bottom: 4rem;
 
   h2 {
     display: inline-block;
     font-size: var(--font-size-super-xl);
+    font-family: var(--font-fam-secondary);
+    font-weight: var(--font-weight-thin);
     text-transform: uppercase;
     margin-bottom: 0;
     animation: scroll 300s linear 0s infinite;

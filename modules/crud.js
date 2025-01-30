@@ -72,4 +72,6 @@ export function updateArtist(id) {
   // // Update and save to local storage
   artistsList.splice(index, 1, artistToUpdate);
   saveListToLS(ARTISTS_KEY, artistsList);
+
+  renderArtistCollection(artistsList);
 }
