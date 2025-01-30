@@ -106,8 +106,8 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 1224px;
   margin-inline: auto;
+  padding-inline: var(--space-base);
 }
 
 #search-container {
@@ -212,5 +212,30 @@ select {
       border-top-left-radius: 15px;
       border-top-right-radius: 15px;
     }
+  }
+}
+
+.collection-container {
+  white-space: nowrap;
+  display: flex;
+  background-color: var(--clr-secondary);
+  color: var(--clr-primary);
+  grid-column: span 3;
+
+  h2 {
+    display: inline-block;
+    font-size: var(--font-size-super-xl);
+    text-transform: uppercase;
+    margin-bottom: 0;
+    animation: scroll 300s linear 0s infinite;
+  }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }

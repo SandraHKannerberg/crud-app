@@ -32,6 +32,7 @@ export function renderSearchResults(array) {
 
     // Button to add the artist to your artist-collection
     const addBtnElem = document.createElement("button");
+    addBtnElem.className = "add-btn";
     addBtnElem.textContent = "Add";
     searchResultLiElem.appendChild(addBtnElem);
 
@@ -45,9 +46,15 @@ export function renderSearchResults(array) {
 export function renderArtistCollection(array) {
   musicContainerElem.innerHTML = "";
   // Heading for the section
+  const collectionTextDivElem = document.createElement("div");
+  collectionTextDivElem.className = "collection-container";
+  musicContainerElem.appendChild(collectionTextDivElem);
+
   const artistCollectionHeadingElem = document.createElement("h2");
-  artistCollectionHeadingElem.textContent = "My Artist Collection";
-  musicContainerElem.appendChild(artistCollectionHeadingElem);
+  artistCollectionHeadingElem.className = "collection-heading";
+
+  artistCollectionHeadingElem.textContent = "Artist Collection * ".repeat(20);
+  collectionTextDivElem.appendChild(artistCollectionHeadingElem);
 
   array.forEach((a) => {
     // Article
@@ -65,6 +72,7 @@ export function renderArtistCollection(array) {
     const favouriteBtnElem = document.createElement("button");
     artistCardElem.appendChild(favouriteBtnElem);
 
+    // Förbättra denna, måste uppdatera sidan för att ändringen ska synas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     favouriteBtnElem.innerHTML = a.isFavourite
       ? "<i class='fa-solid fa-heart'></i>"
       : "<i class='fa-regular fa-heart'></i>";
@@ -74,13 +82,17 @@ export function renderArtistCollection(array) {
       updateArtist(a.id);
     });
 
-    // Link -- artist name
+    // H3 and Link -- artist name
+    const artistNameElem = document.createElement("h3");
+    artistNameElem.className = "artist-name";
+    artistCardElem.appendChild(artistNameElem);
+
     const artistLinkElem = document.createElement("a");
     artistLinkElem.textContent = a.name;
-    // Add the link here
-    // artistLinkElem.setAttribute("href", "");
+    // artistLinkElem.setAttribute("href", `details.html/artist/${id}`); // JUSTERA LÄNKEN NÄR DEN ÄR KLAR
     artistLinkElem.setAttribute("target", "_blank");
     artistLinkElem.className = "artist-link";
+    artistNameElem.appendChild(artistLinkElem);
 
     // Button to delete an artist
     const delBtnElem = document.createElement("button");
@@ -91,7 +103,5 @@ export function renderArtistCollection(array) {
     delBtnElem.addEventListener("click", () => {
       deleteArtistFromCollection(a.id);
     });
-
-    artistCardElem.appendChild(artistLinkElem);
   });
 }
