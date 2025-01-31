@@ -12,7 +12,8 @@ const musicContainerElem = document.getElementById("music-container");
 const artistDetailsContainer = document.getElementById(
   "artist-details-container"
 );
-const artistInfoAsideElem = document.querySelector(".artist-info");
+const artistInfoHeaderElem = document.querySelector(".artist-details-header");
+const artistInfoAsideElem = document.querySelector(".artist-info-container");
 
 // BARA UNDER UTVECKLING -- TA BORT SEN!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // let searchResultList = [];
@@ -119,20 +120,17 @@ export function renderArtistDetails(artist) {
   // Name
   const artistName = document.createElement("h1");
   artistName.className = "artist-name";
-  artistName.textContent = artist.name;
-  artistDetailsContainer.appendChild(artistName);
-
-  // Disambiguation
-  const artistInfoOneElem = document.createElement("p");
-  artistInfoOneElem.className = "artist-info";
-  artistInfoOneElem.textContent = capitalizeFirstLetter(artist.disambiguation);
-  artistDetailsContainer.appendChild(artistInfoOneElem);
+  artistName.textContent = `* ${artist.name}`;
+  artistInfoHeaderElem.appendChild(artistName);
 
   // ASIDE - INFO ------------------------------------------------------------------------
   // Type
   const artistInfoType = document.createElement("p");
   artistInfoType.className = "artist-info";
-  artistInfoType.textContent = `Type ~ ${artist.type}`;
+  artistInfoType.textContent =
+    `Type ~ ${artist.type}` +
+    " " +
+    capitalizeFirstLetter(artist.disambiguation);
   artistInfoAsideElem.appendChild(artistInfoType);
 
   // Gender
@@ -154,21 +152,21 @@ export function renderArtistDetails(artist) {
   artistInfoArea.textContent = `Area ~ ${artist.area.name}, ${artist.country}`;
   artistInfoAsideElem.appendChild(artistInfoArea);
 
-  // Genre-list
-  const artistInfoGenreList = document.createElement("ul");
-  artistInfoGenreList.className = "artist-genre-list";
-  artistInfoAsideElem.appendChild(artistInfoGenreList);
+  // // Genre-list KOLLA UPP HUR MAN FILTRERAR BORT TAGS SOM FAKTISKT INTE ÄR GENRE!!!!!!!!
+  // const artistInfoGenreList = document.createElement("ul");
+  // artistInfoGenreList.className = "artist-genre-list";
+  // artistInfoAsideElem.appendChild(artistInfoGenreList);
 
-  const artistInfoListTitle = document.createElement("p");
-  artistInfoListTitle.className = "artist-info-list-title";
-  artistInfoListTitle.textContent = "Genre ~";
-  artistInfoGenreList.appendChild(artistInfoListTitle);
+  // const artistInfoListTitle = document.createElement("p");
+  // artistInfoListTitle.className = "artist-info-list-title";
+  // artistInfoListTitle.textContent = "Genre ~";
+  // artistInfoGenreList.appendChild(artistInfoListTitle);
 
-  // Tags, genre
-  artist.tags.forEach((tag) => {
-    const artistInfoGenreItem = document.createElement("li");
-    artistInfoGenreItem.className = "artist-genre-listitem";
-    artistInfoGenreItem.textContent = capitalizeFirstLetter(tag.name);
-    artistInfoGenreList.appendChild(artistInfoGenreItem);
-  });
+  // // Tags, genre
+  // artist.tags.forEach((tag) => {
+  //   const artistInfoGenreItem = document.createElement("li");
+  //   artistInfoGenreItem.className = "artist-genre-listitem";
+  //   artistInfoGenreItem.textContent = capitalizeFirstLetter(tag.name);
+  //   artistInfoGenreList.appendChild(artistInfoGenreItem);
+  // });
 }

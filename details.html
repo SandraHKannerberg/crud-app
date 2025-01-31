@@ -4,18 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Maestro - Details</title>
+    <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./details.css" />
+    <script
+      src="https://kit.fontawesome.com/bce314e193.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="./details.js" defer></script>
   </head>
   <body>
-    <header>
-      <nav><a href="/index.html">Home</a></nav>
-    </header>
-    <main>
-      <section id="artist-details-container"></section>
-      <aside class="artist-info">
+    <div class="grid-container">
+      <header class="artist-details-header"></header>
+      <aside class="artist-info-container">
+        <nav>
+          <a
+            class="menu-link"
+            href="/index.html"
+            aria-label="Menu-link to homepage"
+          >
+            <i class="fa-solid fa-house"></i>
+          </a>
+        </nav>
         <h2>Artist information</h2>
       </aside>
-    </main>
+      <main>
+        <p>Main content goes here</p>
+        <section id="artist-details-container"></section>
+      </main>
+      <footer><small>Footer text goes here</small></footer>
+    </div>
   </body>
 </html>

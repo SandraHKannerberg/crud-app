@@ -1,0 +1,45 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: end;
+  margin-top: var(--space-base);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px dotted var(--clr-secondary);
+
+  .menu-link {
+    text-decoration: none;
+    padding: 30px;
+
+    &:visited {
+      color: inherit;
+    }
+  }
+}
+
+header {
+  h1.artist-name {
+    font-family: var(--font-fam-secondary);
+    font-size: var(--font-size-super-xl);
+    font-weight: var(--font-weight-thin);
+    text-transform: uppercase;
+  }
+}
+
+.artist-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-base);
+  grid-row: span 3;
+  border-left: 2px dotted var(--clr-secondary);
+  padding-inline: var(--space-base);
+  min-height: 100vh;
+}
