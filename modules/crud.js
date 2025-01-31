@@ -5,6 +5,9 @@ import {
 } from "./localStorage.js";
 import { renderArtistCollection } from "./render.js";
 
+// DOM references
+const searchResultUlElem = document.querySelector(".search-result-list");
+
 let artistsList = [];
 artistsList = loadArtistsFromLS(ARTISTS_KEY);
 
@@ -29,6 +32,8 @@ export function addArtistToCollection(artist) {
 
   // Render updated artist-collection
   renderArtistCollection(artistsList);
+
+  searchResultUlElem.innerHTML = "";
 }
 
 // DELETE ARTIST FROM COLLECTION

@@ -188,6 +188,7 @@ select {
       text-decoration: none;
       letter-spacing: 2px;
       cursor: pointer;
+      color: var(--clr-secondary);
 
       &:hover {
         text-decoration: underline;

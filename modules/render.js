@@ -17,6 +17,7 @@ const artistInfoAsideElem = document.querySelector(".artist-info-container");
 // );
 
 export function renderSearchResults(array) {
+  searchResultUlElem.innerHTML = "";
   const searchResultTitle = document.createElement("strong");
   searchResultTitle.textContent = "Search-result:";
   searchResultUlElem.appendChild(searchResultTitle);
@@ -128,19 +129,19 @@ export function renderArtistDetails(artist) {
   const artistInfoType = document.createElement("p");
   artistInfoType.className = "artist-info";
   artistInfoType.textContent =
-    `Type ~ ${artist.type}` +
+    `Type ~ ${artist.type},` +
     " " +
     capitalizeFirstLetter(artist.disambiguation);
   artistInfoAsideElem.appendChild(artistInfoType);
 
-  // Gender
+  // Gender - FÖRBÄTTRA OM DET GÄLLER EN GRUPP
   const artistInfoGender = document.createElement("p");
   artistInfoGender.className = "artist-info";
   artistInfoGender.textContent =
     "Gender ~" + " " + capitalizeFirstLetter(artist.gender);
   artistInfoAsideElem.appendChild(artistInfoGender);
 
-  // Born - Startdate
+  // Born - Startdate - FÖRBÄTTRA OM DET GÄLLER EN GRUPP
   const artistInfoBorn = document.createElement("p");
   artistInfoBorn.className = "artist-info";
   artistInfoBorn.textContent = `Born ~ ${artist["life-span"].begin}`;
