@@ -130,12 +130,14 @@ select {
 
 .search-result-list {
   display: grid;
+  margin-inline: auto;
   gap: var(--space-base);
   width: 50vw;
 
   li.search-item {
     width: 100%;
     display: grid;
+    align-items: center;
     grid-template-columns: 1fr 1fr 5em;
     gap: var(--space-base);
 

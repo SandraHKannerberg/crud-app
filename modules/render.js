@@ -9,18 +9,18 @@ import { capitalizeFirstLetter } from "./utilities.js";
 // DOM references
 const searchResultUlElem = document.querySelector(".search-result-list");
 const musicContainerElem = document.getElementById("music-container");
-const artistDetailsContainer = document.getElementById(
-  "artist-details-container"
-);
 const artistInfoHeaderElem = document.querySelector(".artist-details-header");
 const artistInfoAsideElem = document.querySelector(".artist-info-container");
-
-// BARA UNDER UTVECKLING -- TA BORT SEN!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// let searchResultList = [];
-// searchResultList = loadSearchListFromLS(SEARCH_KEY);
-// renderSearchResults(searchResultList);
+// BEHÖVS NÄR JAG FÅR IN MER DETALJER OM ARTISTEN
+// const artistDetailsContainer = document.getElementById(
+//   "artist-details-container"
+// );
 
 export function renderSearchResults(array) {
+  const searchResultTitle = document.createElement("strong");
+  searchResultTitle.textContent = "Search-result:";
+  searchResultUlElem.appendChild(searchResultTitle);
+
   array.forEach((a) => {
     // Each result become a listitem
     const searchResultLiElem = document.createElement("li");
@@ -151,22 +151,4 @@ export function renderArtistDetails(artist) {
   artistInfoArea.className = "artist-info";
   artistInfoArea.textContent = `Area ~ ${artist.area.name}, ${artist.country}`;
   artistInfoAsideElem.appendChild(artistInfoArea);
-
-  // // Genre-list KOLLA UPP HUR MAN FILTRERAR BORT TAGS SOM FAKTISKT INTE ÄR GENRE!!!!!!!!
-  // const artistInfoGenreList = document.createElement("ul");
-  // artistInfoGenreList.className = "artist-genre-list";
-  // artistInfoAsideElem.appendChild(artistInfoGenreList);
-
-  // const artistInfoListTitle = document.createElement("p");
-  // artistInfoListTitle.className = "artist-info-list-title";
-  // artistInfoListTitle.textContent = "Genre ~";
-  // artistInfoGenreList.appendChild(artistInfoListTitle);
-
-  // // Tags, genre
-  // artist.tags.forEach((tag) => {
-  //   const artistInfoGenreItem = document.createElement("li");
-  //   artistInfoGenreItem.className = "artist-genre-listitem";
-  //   artistInfoGenreItem.textContent = capitalizeFirstLetter(tag.name);
-  //   artistInfoGenreList.appendChild(artistInfoGenreItem);
-  // });
 }
