@@ -4,9 +4,15 @@ import {
   updateArtist,
 } from "./crud.js";
 
+import { capitalizeFirstLetter } from "./utilities.js";
+
 // DOM references
 const searchResultUlElem = document.querySelector(".search-result-list");
 const musicContainerElem = document.getElementById("music-container");
+const artistDetailsContainer = document.getElementById(
+  "artist-details-container"
+);
+const artistInfoAsideElem = document.querySelector(".artist-info");
 
 // BARA UNDER UTVECKLING -- TA BORT SEN!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // let searchResultList = [];
@@ -75,7 +81,7 @@ export function renderArtistCollection(array) {
 
     const artistLinkElem = document.createElement("a");
     artistLinkElem.textContent = a.name;
-    // artistLinkElem.setAttribute("href", `details.html/artist/${id}`); // JUSTERA LÄNKEN NÄR DEN ÄR KLAR
+    artistLinkElem.setAttribute("href", `details.html?id=${a.id}`);
     artistLinkElem.setAttribute("target", "_blank");
     artistLinkElem.className = "artist-link";
     artistNameElem.appendChild(artistLinkElem);
@@ -105,5 +111,64 @@ export function renderArtistCollection(array) {
     delBtnElem.addEventListener("click", () => {
       deleteArtistFromCollection(a.id);
     });
+  });
+}
+
+export function renderArtistDetails(artist) {
+  // HEADER -INFO
+  // Name
+  const artistName = document.createElement("h1");
+  artistName.className = "artist-name";
+  artistName.textContent = artist.name;
+  artistDetailsContainer.appendChild(artistName);
+
+  // Disambiguation
+  const artistInfoOneElem = document.createElement("p");
+  artistInfoOneElem.className = "artist-info";
+  artistInfoOneElem.textContent = capitalizeFirstLetter(artist.disambiguation);
+  artistDetailsContainer.appendChild(artistInfoOneElem);
+
+  // ASIDE - INFO ------------------------------------------------------------------------
+  // Type
+  const artistInfoType = document.createElement("p");
+  artistInfoType.className = "artist-info";
+  artistInfoType.textContent = `Type ~ ${artist.type}`;
+  artistInfoAsideElem.appendChild(artistInfoType);
+
+  // Gender
+  const artistInfoGender = document.createElement("p");
+  artistInfoGender.className = "artist-info";
+  artistInfoGender.textContent =
+    "Gender ~" + " " + capitalizeFirstLetter(artist.gender);
+  artistInfoAsideElem.appendChild(artistInfoGender);
+
+  // Born - Startdate
+  const artistInfoBorn = document.createElement("p");
+  artistInfoBorn.className = "artist-info";
+  artistInfoBorn.textContent = `Born ~ ${artist["life-span"].begin}`;
+  artistInfoAsideElem.appendChild(artistInfoBorn);
+
+  // Area (country)
+  const artistInfoArea = document.createElement("p");
+  artistInfoArea.className = "artist-info";
+  artistInfoArea.textContent = `Area ~ ${artist.area.name}, ${artist.country}`;
+  artistInfoAsideElem.appendChild(artistInfoArea);
+
+  // Genre-list
+  const artistInfoGenreList = document.createElement("ul");
+  artistInfoGenreList.className = "artist-genre-list";
+  artistInfoAsideElem.appendChild(artistInfoGenreList);
+
+  const artistInfoListTitle = document.createElement("p");
+  artistInfoListTitle.className = "artist-info-list-title";
+  artistInfoListTitle.textContent = "Genre ~";
+  artistInfoGenreList.appendChild(artistInfoListTitle);
+
+  // Tags, genre
+  artist.tags.forEach((tag) => {
+    const artistInfoGenreItem = document.createElement("li");
+    artistInfoGenreItem.className = "artist-genre-listitem";
+    artistInfoGenreItem.textContent = capitalizeFirstLetter(tag.name);
+    artistInfoGenreList.appendChild(artistInfoGenreItem);
   });
 }
