@@ -2,7 +2,6 @@
 .grid-container {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  grid-template-rows: repeat(3, 1fr);
 }
 
 /* ICON FOR MENU */
@@ -30,7 +29,7 @@ nav {
 header {
   h1.artist-name {
     font-family: var(--font-fam-secondary);
-    font-size: var(--font-size-super-xl);
+    font-size: clamp(1rem, 10vh, 5rem);
     font-weight: var(--font-weight-thin);
     text-transform: uppercase;
   }
@@ -45,4 +44,21 @@ header {
   border-left: 2px dotted var(--clr-secondary);
   padding-inline: var(--space-base);
   min-height: 100vh;
+}
+
+/* RESPONSIVE CSS */
+@media screen and (max-width: 900px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .artist-info-container {
+    border-left: none;
+    min-height: 0;
+    margin-bottom: var(--space-base);
+  }
+
+  nav {
+    align-self: start;
+  }
 }
