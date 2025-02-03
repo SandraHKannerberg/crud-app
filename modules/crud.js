@@ -3,7 +3,10 @@ import {
   ARTISTS_KEY,
   loadArtistsFromLS,
 } from "./localStorage.js";
-import { renderArtistCollection } from "./render.js";
+import { renderArtistCollection, renderArtistDetails } from "./render.js";
+
+// DOM references
+const searchResultUlElem = document.querySelector(".search-result-list");
 
 let artistsList = [];
 artistsList = loadArtistsFromLS(ARTISTS_KEY);
@@ -19,16 +22,21 @@ export function addArtistToCollection(artist) {
     // Add boolean isFavourite with default value false
     artist.isFavourite = false;
 
+    // Add boolean seenConcert with default value false
+    artist.seenConcert = false;
+
     // Add the artist object to the array and save to local storage
     artistsList.push(artist);
     saveListToLS(ARTISTS_KEY, artistsList);
-    alert("Successfully added to the collection"); // IF TIME; FIX A POPUP OR MODAL INSTEAD
+    alert(`Successfully added ${artist.name} to the collection`);
   } else {
-    alert("Artist is already in your collection"); // IF TIME; FIX A POPUP OR MODAL INSTEAD
+    alert(`Artist ${artist.name} is already in your collection`);
   }
 
   // Render updated artist-collection
   renderArtistCollection(artistsList);
+
+  searchResultUlElem.innerHTML = "";
 }
 
 // DELETE ARTIST FROM COLLECTION
@@ -39,9 +47,9 @@ export function deleteArtistFromCollection(id) {
   );
 
   if (!artistToDelete) {
-    alert("Can't find the artist in the collection"); // IF TIME; FIX A POPUP OR MODAL INSTEAD
+    alert(`Can't find the artist ${artistToDelete.name} in the collection`);
   } else {
-    alert("Do you want to delete the artist from your collection"); // IF TIME; FIX A POPUP OR MODAL INSTEAD
+    alert(`Do you want to delete ${artistToDelete.name} from your collection?`);
     // Check the index
     const index = artistsList.indexOf(artistToDelete);
 
@@ -57,19 +65,38 @@ export function deleteArtistFromCollection(id) {
 }
 
 // UPDATE ARTIST
-export function updateArtist(id) {
+// Toggle isFavourite
+export function updateFavouriteArtist(id) {
   // Find the artist in the collection
   const artistToUpdate = artistsList.find(
     (artistToUpdate) => artistToUpdate.id === id
   );
 
-  /// Find the index
+  // Find the index
   const index = artistsList.indexOf(artistToUpdate);
 
   // Change the boolean isFavourite
   artistToUpdate.isFavourite = !artistToUpdate.isFavourite;
 
-  // // Update and save to local storage
+  // Update and save to local storage
   artistsList.splice(index, 1, artistToUpdate);
+  saveListToLS(ARTISTS_KEY, artistsList);
+
+  renderArtistCollection(artistsList);
+}
+
+// Toggle seenConcert
+export function updateSeenArtistConcert(artist) {
+  console.log(artist);
+
+  // Change the boolean seenConcert
+  artist.seenConcert = !artist.seenConcert;
+  console.log(artist.seenConcert);
+
+  // Find the index
+  const index = artistsList.indexOf(artist);
+
+  // Update and save to local storage
+  artistsList.splice(index, 1, artist);
   saveListToLS(ARTISTS_KEY, artistsList);
 }

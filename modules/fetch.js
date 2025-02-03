@@ -1,4 +1,5 @@
-import { renderSearchResults } from "./render.js";
+import { renderArtistDetails, renderSearchResults } from "./render.js";
+import { ARTISTS_KEY, loadArtistsFromLS } from "./localStorage.js";
 
 // API base url
 const baseURL = "https://musicbrainz.org/ws/2/";
@@ -29,5 +30,22 @@ export async function fetchSearchResults(resource, query = {}) {
     renderSearchResults(searchResults);
   } catch (error) {
     console.error(error);
+  }
+}
+
+// FETCH FROM THE LIST IN LOCAL STORAGE
+export function fetchDetails() {
+  const urlParams = new URLSearchParams(document.location.search);
+  const artistId = urlParams.get("id");
+
+  if (artistId) {
+    const artists = loadArtistsFromLS(ARTISTS_KEY);
+    const artist = artists.find((a) => a.id == artistId);
+
+    if (artist) {
+      renderArtistDetails(artist);
+    } else {
+      alert("Something went wrong - Artist not found");
+    }
   }
 }

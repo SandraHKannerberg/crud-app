@@ -5,47 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Maestro</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <!-- SCRIPT FOR ICONS-->
     <script
       src="https://kit.fontawesome.com/bce314e193.js"
       crossorigin="anonymous"
     ></script>
+
+    <!-- JS SCRIPT-->
     <script type="module" src="./script.js" defer></script>
   </head>
+
   <body>
-    <header>
-      <h1>Thank you for the music</h1>
+    <!-- HERO SECTION -->
+    <header class="hero">
+      <section class="text-container">
+        <h1>
+          Thank you for
+          <span class="text-effect">the music</span>
+        </h1>
+      </section>
+      <!-- IMAGES IN HERO SECTION -->
+      <figure class="img-container">
+        <img src="./assets/music-player.jpg" alt="Old music player" />
+        <img src="./assets/guitars.jpg" alt="Two guitars" />
+      </figure>
     </header>
-    <main>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
       <section id="search-container">
-        <h2>Search</h2>
+        <h2><span class="text-effect">expand your</span> artist collection</h2>
+
+        <!-- SEARCH FORM -->
         <form id="search-form">
           <label for="artist-input" class="artist-input"
             >Search for an artist
             <input
               type="text"
               id="artist-input"
-              placeholder="Artist..."
+              placeholder="Enter artist here..."
               required
             />
           </label>
           <label for="type" class="type-select"
-            >Group or Person
+            >Type
             <select name="type" id="type">
-              <option value="" disabled selected>--</option>
+              <option value="" disabled selected>
+                Choose group or a person
+              </option>
               <option value="Group">Group</option>
               <option value="Person">Person</option>
             </select>
           </label>
           <label for="search-limit" class="search-limit"
             >Limit your search? 10 by default
-            <input type="number" id="search-limit" placeholder="Limit..."
+            <input
+              type="number"
+              id="search-limit"
+              placeholder="Enter limit here..."
           /></label>
-          <button type="submit">Search</button>
+          <button type="submit" class="btn search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
         </form>
-        <!-- table istället FÖR UL??? -->
+
+        <!-- UL FOR SEARCH RESULTS -->
         <ul role="list " class="search-result-list"></ul>
       </section>
-      <section id="music-container"></section>
+
+      <!-- IMAGE GALLERY FOR A NICE USER EXPERIENCE -->
+      <figure class="img-gallery">
+        <img src="./assets/piano-and-headset.jpg" alt="Headphones on a piano" />
+        <img src="./assets/musical-notes.jpg" alt="Musical notes" />
+        <img
+          src="./assets/microphone-with-headset.jpg"
+          alt="A microphone and headphones"
+        />
+        <img src="./assets/tapes.jpg" alt="A lot of tapes" />
+      </figure>
+
+      <!-- ARTIST COLLECTION-->
+      <section id="artists-container"></section>
     </main>
+
+    <!-- FOOTER-->
+    <footer>
+      <section class="text-container-footer">
+        <small>Copyright &copy; Sandra Höst Kannerberg</small>
+        <small>Lexicon IT-Proffs - Frontend 24/25</small>
+      </section>
+
+      <section class="icons-container">
+        <i class="fa-solid fa-music"></i>
+        <i class="fa-solid fa-headphones"></i>
+        <i class="fa-solid fa-radio"></i>
+      </section>
+    </footer>
   </body>
 </html>
