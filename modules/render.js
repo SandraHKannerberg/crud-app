@@ -16,6 +16,7 @@ const artistInfoAsideElem = document.querySelector(".artist-info-container");
 //   "artist-details-container"
 // );
 
+// FUNCTION TO RENDER THE SEARCH RESULTS
 export function renderSearchResults(array) {
   searchResultUlElem.innerHTML = "";
   const searchResultTitle = document.createElement("strong");
@@ -40,32 +41,32 @@ export function renderSearchResults(array) {
 
     // Button to add the artist to your artist-collection
     const addBtnElem = document.createElement("button");
-    addBtnElem.className = "add-btn";
+    addBtnElem.className = "btn add-btn";
     addBtnElem.textContent = "Add";
     searchResultLiElem.appendChild(addBtnElem);
 
-    // Eventlistener -- add
     addBtnElem.addEventListener("click", () => {
       addArtistToCollection(a);
     });
   });
 }
 
+// RENDER YOUR ARTIST COLLECTION
 export function renderArtistCollection(array) {
   musicContainerElem.innerHTML = "";
-  // Heading for the section
-  const collectionTextDivElem = document.createElement("div");
-  collectionTextDivElem.className = "collection-container";
-  musicContainerElem.appendChild(collectionTextDivElem);
+  // Heading for the section with css animation
+  const headingContainerElem = document.createElement("div"); // Needed for the animation
+  headingContainerElem.className = "heading-container";
+  musicContainerElem.appendChild(headingContainerElem);
 
-  const artistCollectionHeadingElem = document.createElement("h2");
-  artistCollectionHeadingElem.className = "collection-heading";
+  const animatedHeadingElem = document.createElement("h2");
+  animatedHeadingElem.className = "animated-heading";
 
-  artistCollectionHeadingElem.textContent = "Artist Collection * ".repeat(20);
-  collectionTextDivElem.appendChild(artistCollectionHeadingElem);
+  animatedHeadingElem.textContent = "Artist Collection * ".repeat(20); // Needed for the animation
+  headingContainerElem.appendChild(animatedHeadingElem);
 
   array.forEach((a) => {
-    // Article
+    // Artist-card
     const artistCardElem = document.createElement("article");
     artistCardElem.className = "artist-card";
     musicContainerElem.appendChild(artistCardElem);
@@ -89,33 +90,32 @@ export function renderArtistCollection(array) {
     artistNameElem.appendChild(artistLinkElem);
 
     // Button with heart icon -- mark an artist as a favourite
+    // Trigger the update function
     const favouriteBtnElem = document.createElement("button");
-    favouriteBtnElem.className = "favourite-btn";
+    favouriteBtnElem.className = "icon-btn favourite-btn";
     artistCardElem.appendChild(favouriteBtnElem);
 
-    // Förbättra denna, måste uppdatera sidan för att ändringen ska synas!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     favouriteBtnElem.innerHTML = a.isFavourite
       ? "<i class='fa-solid fa-heart'></i>"
       : "<i class='fa-regular fa-heart'></i>";
 
-    // Eventlistener -- update
     favouriteBtnElem.addEventListener("click", () => {
       updateArtist(a.id);
     });
 
-    // Button to delete an artist
+    // Button to delete an artist by id
     const delBtnElem = document.createElement("button");
     delBtnElem.innerHTML = "<i class='fa-solid fa-xmark'></i>";
-    delBtnElem.className = "del-btn";
+    delBtnElem.className = "icon-btn del-btn";
     artistCardElem.appendChild(delBtnElem);
 
-    // Eventlistener -- delete
     delBtnElem.addEventListener("click", () => {
-      deleteArtistFromCollection(a.id);
+      deleteArtistFromCollection(a.id, a.name);
     });
   });
 }
 
+// RENDER ARTIST DETAILS
 export function renderArtistDetails(artist) {
   // HEADER -INFO
   // Name
@@ -124,7 +124,7 @@ export function renderArtistDetails(artist) {
   artistName.textContent = `* ${artist.name}`;
   artistInfoHeaderElem.appendChild(artistName);
 
-  // ASIDE - INFO ------------------------------------------------------------------------
+  // ASIDE - INFO
   // Type
   const artistInfoType = document.createElement("p");
   artistInfoType.className = "artist-info";

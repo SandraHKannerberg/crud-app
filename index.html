@@ -6,13 +6,18 @@
     <title>Music Maestro</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./index.css" />
+    <!-- SCRIPT FOR ICONS-->
     <script
       src="https://kit.fontawesome.com/bce314e193.js"
       crossorigin="anonymous"
     ></script>
+
+    <!-- JS SCRIPT-->
     <script type="module" src="./script.js" defer></script>
   </head>
+
   <body>
+    <!-- HERO SECTION -->
     <header class="hero">
       <section class="text-container">
         <h1>
@@ -20,15 +25,19 @@
           <span class="text-effect">the music</span>
         </h1>
       </section>
-      <!-- Kolla upp om en figure kan agera som div för flera bilder eller om varje bild behöver sin egen figure -->
+      <!-- IMAGES IN HERO SECTION -->
       <figure class="img-container">
         <img src="./assets/music-player.jpg" alt="Old music player" />
         <img src="./assets/guitars.jpg" alt="Two guitars" />
       </figure>
     </header>
+
+    <!-- MAIN CONTENT -->
     <main>
       <section id="search-container">
         <h2><span class="text-effect">expand your</span> artist collection</h2>
+
+        <!-- SEARCH FORM -->
         <form id="search-form">
           <label for="artist-input" class="artist-input"
             >Search for an artist
@@ -56,12 +65,15 @@
               id="search-limit"
               placeholder="Enter limit here..."
           /></label>
-          <button type="submit" class="search-btn">
+          <button type="submit" class="btn search-btn">
             <i class="fa-solid fa-magnifying-glass"></i>Search
           </button>
         </form>
-        <!-- table istället FÖR UL??? -->
+
+        <!-- UL FOR SEARCH RESULTS -->
         <ul role="list " class="search-result-list"></ul>
+
+        <!-- IMAGE GALLERY FOR A NICE USER EXPERIENCE -->
         <figure class="img-gallery">
           <img
             src="./assets/piano-and-headset.jpg"
@@ -75,13 +87,22 @@
           <img src="./assets/tapes.jpg" alt="A lot of tapes" />
         </figure>
       </section>
+
+      <!-- ARTIST COLLECTION-->
       <section id="music-container"></section>
     </main>
+
+    <!-- FOOTER-->
     <footer>
-      <small>Footer text goes here</small>
-      <i class="fa-solid fa-music"></i>
-      <i class="fa-solid fa-headphones"></i>
-      <i class="fa-solid fa-radio"></i>
+      <small
+        >Copyright &copy; Sandra Höst Kannerberg, Lexicon IT-Proffs - Frontend
+        24/25</small
+      >
+      <div class="icons-container">
+        <i class="fa-solid fa-music"></i>
+        <i class="fa-solid fa-headphones"></i>
+        <i class="fa-solid fa-radio"></i>
+      </div>
     </footer>
   </body>
 </html>

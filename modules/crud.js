@@ -25,9 +25,9 @@ export function addArtistToCollection(artist) {
     // Add the artist object to the array and save to local storage
     artistsList.push(artist);
     saveListToLS(ARTISTS_KEY, artistsList);
-    alert("Successfully added to the collection"); // IF TIME; FIX A POPUP OR MODAL INSTEAD
+    alert(`Successfully added ${artist.name} to the collection`);
   } else {
-    alert("Artist is already in your collection"); // IF TIME; FIX A POPUP OR MODAL INSTEAD
+    alert(`Artist ${artist.name} is already in your collection`);
   }
 
   // Render updated artist-collection
@@ -37,16 +37,16 @@ export function addArtistToCollection(artist) {
 }
 
 // DELETE ARTIST FROM COLLECTION
-export function deleteArtistFromCollection(id) {
+export function deleteArtistFromCollection(id, name) {
   // Find the artist in the collection
   const artistToDelete = artistsList.find(
     (artistToDelete) => artistToDelete.id === id
   );
 
   if (!artistToDelete) {
-    alert("Can't find the artist in the collection"); // IF TIME; FIX A POPUP OR MODAL INSTEAD
+    alert(`Can't find the artist ${artistToDelete.name} in the collection`);
   } else {
-    alert("Do you want to delete the artist from your collection"); // IF TIME; FIX A POPUP OR MODAL INSTEAD
+    alert(`Do you want to delete ${artistToDelete.name} from your collection?`);
     // Check the index
     const index = artistsList.indexOf(artistToDelete);
 
@@ -68,13 +68,13 @@ export function updateArtist(id) {
     (artistToUpdate) => artistToUpdate.id === id
   );
 
-  /// Find the index
+  // Find the index
   const index = artistsList.indexOf(artistToUpdate);
 
   // Change the boolean isFavourite
   artistToUpdate.isFavourite = !artistToUpdate.isFavourite;
 
-  // // Update and save to local storage
+  // Update and save to local storage
   artistsList.splice(index, 1, artistToUpdate);
   saveListToLS(ARTISTS_KEY, artistsList);
 

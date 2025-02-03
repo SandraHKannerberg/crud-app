@@ -24,6 +24,7 @@ header.hero {
   }
 }
 
+/* HEADINGS AND TEXT EFFECTS */
 h1 {
   font-family: var(--font-fam-secondary);
   text-align: center;
@@ -33,10 +34,48 @@ h1 {
   text-shadow: 5px 5px 30px #fff;
 }
 
+h2 {
+  grid-column: span 2;
+  margin-bottom: var(--space-medium);
+  font-family: var(--font-fam-secondary);
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
 .text-effect {
   text-transform: none;
   font-style: var(--font-style-italic);
   font-weight: var(--font-weight-thin);
+}
+
+/* Container for an animated title */
+.heading-container {
+  white-space: nowrap;
+  display: flex;
+  background-color: var(--clr-secondary);
+  color: var(--clr-primary);
+  grid-column: span 4;
+  margin-bottom: 4rem;
+  border-radius: 15px;
+
+  h2.animated-heading {
+    display: inline-block;
+    font-size: var(--font-size-super-xl);
+    font-family: var(--font-fam-secondary);
+    font-weight: var(--font-weight-thin);
+    text-transform: uppercase;
+    margin-bottom: 0;
+    animation: scroll 300s linear 0s infinite;
+  }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 main {
@@ -48,17 +87,10 @@ main {
   padding-inline: var(--space-base);
 }
 
+/* SEARCH RELATED */
 #search-container {
   gap: var(--space-base);
   margin-block: var(--space-medium);
-
-  h2 {
-    grid-column: span 2;
-    margin-bottom: var(--space-medium);
-    font-family: var(--font-fam-secondary);
-    font-size: 2rem;
-    text-transform: uppercase;
-  }
 
   .img-gallery {
     display: grid;
@@ -82,27 +114,6 @@ main {
   border: 2px dotted var(--clr-secondary);
   border-radius: 15px;
   margin-bottom: 4rem;
-
-  .search-btn {
-    height: 3rem;
-    width: 100%;
-    background-color: var(--clr-secondary);
-    color: var(--clr-primary);
-    border: 2px solid var(--clr-secondary);
-    border-radius: 5px;
-    font-family: var(--font-fam-primary);
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-bold);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    align-self: end;
-
-    &:hover {
-      color: var(--clr-secondary);
-      background-color: var(--clr-primary);
-    }
-  }
 }
 
 .artist-input,
@@ -140,113 +151,100 @@ select {
     align-items: center;
     grid-template-columns: 1fr 1fr 5em;
     gap: var(--space-base);
-
-    .add-btn {
-      padding-block: 0.5rem;
-      background-color: var(--clr-secondary);
-      color: var(--clr-primary);
-      border: 2px solid var(--clr-secondary);
-      border-radius: 5px;
-      font-family: var(--font-fam-primary);
-      font-size: var(--font-size-base);
-      font-weight: var(--font-weight-bold);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-
-      &:hover {
-        color: var(--clr-secondary);
-        background-color: var(--clr-primary);
-      }
-    }
   }
 }
 
+/* COLLECTION RELETED */
 #music-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-medium);
   margin-block: var(--space-medium);
-
-  .artist-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    border: 2px dotted var(--clr-secondary);
-    border-radius: 15px;
-
-    img {
-      border-top-left-radius: 15px;
-      border-top-right-radius: 15px;
-      border-bottom: 2px dotted var(--clr-secondary);
-    }
-
-    .artist-link {
-      margin-left: 0.5rem;
-      text-transform: uppercase;
-      text-decoration: none;
-      letter-spacing: 2px;
-      cursor: pointer;
-      color: var(--clr-secondary);
-
-      &:hover {
-        text-decoration: underline;
-      }
-
-      &:visited {
-        color: inherit;
-      }
-    }
-
-    .favourite-btn {
-      display: flex;
-      padding: 10px;
-      border: none;
-      background-color: inherit;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* Delete button as an xmark placed in the right top corner*/
-    .del-btn {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 10px;
-      border: none;
-      background-color: inherit;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-  }
 }
 
-.collection-container {
-  white-space: nowrap;
+.artist-card {
+  position: relative;
   display: flex;
-  background-color: var(--clr-secondary);
-  color: var(--clr-primary);
-  grid-column: span 4;
-  margin-bottom: 4rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 2px dotted var(--clr-secondary);
   border-radius: 15px;
 
-  h2 {
-    display: inline-block;
-    font-size: var(--font-size-super-xl);
-    font-family: var(--font-fam-secondary);
-    font-weight: var(--font-weight-thin);
+  img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom: 2px dotted var(--clr-secondary);
+  }
+
+  .artist-link {
+    margin-left: 0.5rem;
     text-transform: uppercase;
-    margin-bottom: 0;
-    animation: scroll 300s linear 0s infinite;
+    text-decoration: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    color: var(--clr-secondary);
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:visited {
+      color: inherit;
+    }
   }
 }
 
-@keyframes scroll {
-  from {
-    transform: translateX(0%);
+/* BUTTONS WITH TEXT */
+/* Common css */
+.btn {
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-color: var(--clr-secondary);
+  color: var(--clr-primary);
+  border: 2px solid var(--clr-secondary);
+  border-radius: 5px;
+  font-family: var(--font-fam-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+
+  &:hover {
+    color: var(--clr-secondary);
+    background-color: var(--clr-primary);
   }
-  to {
-    transform: translateX(-100%);
-  }
+}
+
+/* Customized css */
+.add-btn {
+  padding-block: var(--padding-btn);
+}
+
+/* Customized css */
+.search-btn {
+  height: 3rem;
+  width: 100%;
+  align-self: end;
+}
+
+/* BUTTONS WITH ICON */
+/* Common csS */
+.icon-btn {
+  padding: var(--padding-btn);
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+/* Customized css */
+.favourite-btn {
+  display: flex;
+  font-size: 1.5rem;
+}
+
+/* Customized css */
+.del-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1rem;
 }

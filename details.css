@@ -1,9 +1,11 @@
+/* WRAPPER THE PAGE WITH GRID */
 .grid-container {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: repeat(3, 1fr);
 }
 
+/* ICON FOR MENU */
 nav {
   display: flex;
   justify-content: center;
@@ -34,6 +36,7 @@ header {
   }
 }
 
+/* ASIDE WITH SHORT INFO ABOUT THE ARTIST*/
 .artist-info-container {
   display: flex;
   flex-direction: column;

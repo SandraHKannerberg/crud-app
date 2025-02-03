@@ -13,9 +13,14 @@
     <script type="module" src="./details.js" defer></script>
   </head>
   <body>
+    <!-- WRAP THE PAGE WITH GRID-LAYOUT -->
     <div class="grid-container">
+      <!-- HEADER WITH ARTIST NAME -->
       <header class="artist-details-header"></header>
+
+      <!-- ASIDE WITH HOME-BTN AND ARTIST INFORMATION -->
       <aside class="artist-info-container">
+        <!-- MENU -->
         <nav>
           <a
             class="menu-link"
@@ -27,11 +32,25 @@
         </nav>
         <h2>Artist information</h2>
       </aside>
+
+      <!-- MAIN CONTENT -->
       <main>
         <p>Main content goes here</p>
         <section id="artist-details-container"></section>
       </main>
-      <footer><small>Footer text goes here</small></footer>
+
+      <!-- FOOTER-->
+      <footer>
+        <small
+          >Copyright &copy; Sandra Höst Kannerberg, Lexicon IT-Proffs - Frontend
+          24/25</small
+        >
+        <div class="icons-container">
+          <i class="fa-solid fa-music"></i>
+          <i class="fa-solid fa-headphones"></i>
+          <i class="fa-solid fa-radio"></i>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

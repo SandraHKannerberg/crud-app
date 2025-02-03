@@ -33,6 +33,7 @@ export async function fetchSearchResults(resource, query = {}) {
   }
 }
 
+// FETCH FROM THE LIST IN LOCAL STORAGE
 export function fetchDetails() {
   const urlParams = new URLSearchParams(document.location.search);
   const artistId = urlParams.get("id");
@@ -44,7 +45,7 @@ export function fetchDetails() {
     if (artist) {
       renderArtistDetails(artist);
     } else {
-      alert("Artist not found"); // FÖRBÄTTRA SENARE TILL POPUP ELLER MODAL!!
+      alert("Something went wrong - Artist not found");
     }
   }
 }
