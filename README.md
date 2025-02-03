@@ -9,12 +9,12 @@ Integration via API MusicBrainz, link to documentation https://musicbrainz.org/d
 
 I have create an app where you can:
 
-- Search for artists
-- Add artists to your own collection (add-function CRUD)
-- Mark your favourite artists with a heart (update-function CRUD)
-- Delete an artist from the collection (delete-function CRUD)
+- Search for artists (fetch to API).
+- Add artists to your own collection (add-function CRUD). The artistslist is saved in local storage.
+- Mark your favourite artists with a heart (update-function CRUD), update the list in local storage. 
+- Delete an artist from the collection (list i local storage) (delete-function CRUD)
 - Go to detailpage about a specifik artist in the collection
-- Mark if you have been on the artists concert (update-function CRUD)
+- Mark if you have been on the artists concert (update-function CRUD), update the list in local storage.
 
 # My motivation
 
