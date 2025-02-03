@@ -134,18 +134,27 @@ export function renderArtistDetails(artist) {
     capitalizeFirstLetter(artist.disambiguation);
   artistInfoAsideElem.appendChild(artistInfoType);
 
-  // Gender - FÖRBÄTTRA OM DET GÄLLER EN GRUPP
-  const artistInfoGender = document.createElement("p");
-  artistInfoGender.className = "artist-info";
-  artistInfoGender.textContent =
-    "Gender ~" + " " + capitalizeFirstLetter(artist.gender);
-  artistInfoAsideElem.appendChild(artistInfoGender);
+  // Gender
+  if (artist.type === "Person") {
+    const artistInfoGender = document.createElement("p");
+    artistInfoGender.className = "artist-info";
+    artistInfoGender.textContent =
+      "Gender ~" + " " + capitalizeFirstLetter(artist.gender);
+    artistInfoAsideElem.appendChild(artistInfoGender);
+  }
 
-  // Born - Startdate - FÖRBÄTTRA OM DET GÄLLER EN GRUPP
-  const artistInfoBorn = document.createElement("p");
-  artistInfoBorn.className = "artist-info";
-  artistInfoBorn.textContent = `Born ~ ${artist["life-span"].begin}`;
-  artistInfoAsideElem.appendChild(artistInfoBorn);
+  // Born / Startdate
+  if (artist.type === "Person") {
+    const artistInfoBorn = document.createElement("p");
+    artistInfoBorn.className = "artist-info";
+    artistInfoBorn.textContent = `Born ~ ${artist["life-span"].begin}`;
+    artistInfoAsideElem.appendChild(artistInfoBorn);
+  } else {
+    const artistInfoBorn = document.createElement("p");
+    artistInfoBorn.className = "artist-info";
+    artistInfoBorn.textContent = `Startdate ~ ${artist["life-span"].begin}`;
+    artistInfoAsideElem.appendChild(artistInfoBorn);
+  }
 
   // Area (country)
   const artistInfoArea = document.createElement("p");

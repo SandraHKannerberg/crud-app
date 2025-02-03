@@ -2,6 +2,7 @@
 .grid-container {
   display: grid;
   grid-template-columns: 3fr 1fr;
+  grid-template-rows: min-content 1fr min-content;
 }
 
 /* ICON FOR MENU */

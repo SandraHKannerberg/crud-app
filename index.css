@@ -121,6 +121,7 @@ select {
   border: none;
   border-bottom: 2px solid var(--clr-secondary);
   font-family: var(--font-fam-primary);
+  flex: 1;
 
   &::placeholder {
     color: var(--clr-secondary);
@@ -162,8 +163,10 @@ select {
 #music-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
   gap: var(--space-medium);
   margin-block: var(--space-medium);
+  align-items: stretch;
 }
 
 .artist-card {
@@ -181,7 +184,8 @@ select {
   }
 
   .artist-link {
-    margin-left: var(--space-xsmall);
+    flex-grow: 1;
+    margin-inline: var(--space-xsmall);
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: var(--letter-spacing);
@@ -235,7 +239,7 @@ select {
 .icon-btn {
   padding: var(--space-xsmall);
   border: none;
-  background-color: inherit;
+  /* background-color: inherit; */
   cursor: pointer;
 }
 
@@ -243,6 +247,8 @@ select {
 .favourite-btn {
   display: flex;
   font-size: var(--font-size-icon-lg);
+  background-color: inherit;
+  margin-top: auto;
 }
 
 /* Customized css */
@@ -251,6 +257,10 @@ select {
   top: 0;
   right: 0;
   font-size: var(--font-size-icon-sm);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  opacity: 0.8;
 }
 
 /* RESPONSIVE CSS */
@@ -299,5 +309,9 @@ select {
 
   .img-gallery {
     grid-template-columns: 1fr;
+  }
+
+  #music-container {
+    gap: var(--space-base);
   }
 }
