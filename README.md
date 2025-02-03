@@ -32,3 +32,4 @@ HTML, CSS, JavaScript, API-integration
 
 - Read about an artists releases on the detail-page
 - Add more CSS animations for impactful user experiences
+- Replacing alerts with modals
