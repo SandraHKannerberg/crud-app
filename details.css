@@ -47,6 +47,24 @@ header {
   min-height: 100vh;
 }
 
+main {
+  margin: var(--space-medium);
+}
+
+/* BEEN ON A CONCERT CHECKBOX*/
+input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--clr-primary);
+  border: 2px solid var(--clr-secondary);
+  cursor: pointer;
+  margin-left: var(--space-base);
+}
+
+input[type="checkbox"] {
+  accent-color: var(--clr-secondary);
+}
+
 /* RESPONSIVE CSS */
 @media screen and (max-width: 900px) {
   .grid-container {

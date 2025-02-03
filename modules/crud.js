@@ -3,7 +3,7 @@ import {
   ARTISTS_KEY,
   loadArtistsFromLS,
 } from "./localStorage.js";
-import { renderArtistCollection } from "./render.js";
+import { renderArtistCollection, renderArtistDetails } from "./render.js";
 
 // DOM references
 const searchResultUlElem = document.querySelector(".search-result-list");
@@ -22,6 +22,9 @@ export function addArtistToCollection(artist) {
     // Add boolean isFavourite with default value false
     artist.isFavourite = false;
 
+    // Add boolean seenConcert with default value false
+    artist.seenConcert = false;
+
     // Add the artist object to the array and save to local storage
     artistsList.push(artist);
     saveListToLS(ARTISTS_KEY, artistsList);
@@ -37,7 +40,7 @@ export function addArtistToCollection(artist) {
 }
 
 // DELETE ARTIST FROM COLLECTION
-export function deleteArtistFromCollection(id, name) {
+export function deleteArtistFromCollection(id) {
   // Find the artist in the collection
   const artistToDelete = artistsList.find(
     (artistToDelete) => artistToDelete.id === id
@@ -62,7 +65,8 @@ export function deleteArtistFromCollection(id, name) {
 }
 
 // UPDATE ARTIST
-export function updateArtist(id) {
+// Toggle isFavourite
+export function updateFavouriteArtist(id) {
   // Find the artist in the collection
   const artistToUpdate = artistsList.find(
     (artistToUpdate) => artistToUpdate.id === id
@@ -79,4 +83,20 @@ export function updateArtist(id) {
   saveListToLS(ARTISTS_KEY, artistsList);
 
   renderArtistCollection(artistsList);
+}
+
+// Toggle seenConcert
+export function updateSeenArtistConcert(artist) {
+  console.log(artist);
+
+  // Change the boolean seenConcert
+  artist.seenConcert = !artist.seenConcert;
+  console.log(artist.seenConcert);
+
+  // Find the index
+  const index = artistsList.indexOf(artist);
+
+  // Update and save to local storage
+  artistsList.splice(index, 1, artist);
+  saveListToLS(ARTISTS_KEY, artistsList);
 }

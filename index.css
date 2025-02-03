@@ -147,6 +147,7 @@ select {
 /* DISPLAY THE SEARCH RESULTS*/
 .search-result-list {
   display: grid;
+  margin-top: var(--space-medium);
   margin-inline: auto;
   gap: var(--space-base);
   width: 50vw;
@@ -235,6 +236,25 @@ select {
   height: 3rem;
   width: 100%;
   align-self: end;
+}
+
+.remove-btn {
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+  background-color: var(--clr-primary);
+  color: var(--clr-secondary);
+  border: 2px solid var(--clr-secondary);
+  border-radius: var(--border-radius-small);
+  padding: var(--space-xsmall);
+  font-family: var(--font-fam-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+
+  &:hover {
+    outline: 2px solid var(--clr-secondary);
+    outline-offset: 3px;
+  }
 }
 
 /* BUTTONS WITH ICON */

@@ -13,7 +13,11 @@ const limitInputElem = document.getElementById("search-limit");
 let artistsList = [];
 artistsList = loadArtistsFromLS(ARTISTS_KEY);
 
-renderArtistCollection(artistsList);
+function init() {
+  renderArtistCollection(artistsList);
+}
+
+document.addEventListener("DOMContentLoaded", init);
 
 // Eventlistener -- form-submit
 formElem.addEventListener("submit", async (event) => {
