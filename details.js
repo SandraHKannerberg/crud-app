@@ -4,4 +4,4 @@ function init() {
   fetchDetails();
 }
 
-init();
+document.addEventListener("DOMContentLoaded", init);

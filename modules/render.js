@@ -16,7 +16,6 @@ const artistsContainerElem = document.getElementById("artists-container");
 // DOM references -- details
 const artistInfoHeaderElem = document.querySelector(".artist-details-header");
 const artistInfoAsideElem = document.querySelector(".artist-info-container");
-
 const artistDetailsContainer = document.getElementById(
   "artist-details-container"
 );
@@ -197,20 +196,7 @@ export function renderArtistDetails(artist) {
   seenConcertCheckboxElem.checked = artist.seenConcert;
   artistDetailsContainer.appendChild(seenConcertCheckboxElem);
 
-  seenConcertCheckboxElem.addEventListener("change", (event) => {
-    const id = event.target.id;
-
-    console.log(id);
-
+  seenConcertCheckboxElem.addEventListener("change", () => {
     updateSeenArtistConcert(artist);
-
-    // Find the id and update isDone value
-    // const activityToMarkAsDone = findActivityByIdInLS(id);
-    // artist.seenConcert = !artist.seenConcert;
-
-    // Update and save to local storage
-    // const index = bucketListFromLS.findIndex((a) => a.id === id);
-    // bucketListFromLS.splice(index, 1, activity);
-    // saveBucketListToLS(LIST_KEY, bucketListFromLS);
   });
 }
