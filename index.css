@@ -38,7 +38,7 @@ h2 {
   grid-column: span 2;
   margin-bottom: var(--space-medium);
   font-family: var(--font-fam-secondary);
-  font-size: 2rem;
+  font-size: var(--font-size-medium);
   text-transform: uppercase;
 }
 
@@ -55,8 +55,8 @@ h2 {
   background-color: var(--clr-secondary);
   color: var(--clr-primary);
   grid-column: span 4;
-  margin-bottom: 4rem;
-  border-radius: 15px;
+  margin-bottom: var(--space-lg);
+  border-radius: var(--border-radius-base);
 
   h2.animated-heading {
     display: inline-block;
@@ -91,19 +91,6 @@ main {
 #search-container {
   gap: var(--space-base);
   margin-block: var(--space-medium);
-
-  .img-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-base);
-    margin-top: 3rem;
-
-    img {
-      border-radius: 15px;
-      object-fit: cover;
-      aspect-ratio: 1;
-    }
-  }
 }
 
 #search-form {
@@ -112,10 +99,11 @@ main {
   gap: var(--space-base);
   padding: var(--space-base);
   border: 2px dotted var(--clr-secondary);
-  border-radius: 15px;
-  margin-bottom: 4rem;
+  border-radius: var(--border-radius-base);
+  margin-bottom: var(--space-lg);
 }
 
+/* LABELS -- GROUPED BOTH LABEL AND INPUT TO IMPLEMENT A FLEXBOX LAYOUT */
 .artist-input,
 .type-select,
 .search-limit {
@@ -127,7 +115,7 @@ main {
 input,
 select {
   height: 3rem;
-  padding: 10px;
+  padding: var(--space-xsmall);
   background-color: var(--clr-primary);
   border: none;
   border-bottom: 2px solid var(--clr-secondary);
@@ -139,6 +127,21 @@ select {
   }
 }
 
+/* DECORATION PURPOSE */
+.img-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-base);
+  margin-top: var(--space-lg);
+
+  img {
+    border-radius: var(--border-radius-base);
+    object-fit: cover;
+    aspect-ratio: 1;
+  }
+}
+
+/* DISPLAY THE SEARCH RESULTS*/
 .search-result-list {
   display: grid;
   margin-inline: auto;
@@ -166,21 +169,21 @@ select {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--space-xsmall);
   border: 2px dotted var(--clr-secondary);
-  border-radius: 15px;
+  border-radius: var(--border-radius-base);
 
   img {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: var(--border-radius-base);
+    border-top-right-radius: var(--border-radius-base);
     border-bottom: 2px dotted var(--clr-secondary);
   }
 
   .artist-link {
-    margin-left: 0.5rem;
+    margin-left: var(--space-xsmall);
     text-transform: uppercase;
     text-decoration: none;
-    letter-spacing: 2px;
+    letter-spacing: var(--letter-spacing);
     cursor: pointer;
     color: var(--clr-secondary);
 
@@ -199,11 +202,11 @@ select {
 .btn {
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: var(--letter-spacing);
   background-color: var(--clr-secondary);
   color: var(--clr-primary);
   border: 2px solid var(--clr-secondary);
-  border-radius: 5px;
+  border-radius: var(--border-radius-small);
   font-family: var(--font-fam-primary);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-bold);
@@ -216,7 +219,7 @@ select {
 
 /* Customized css */
 .add-btn {
-  padding-block: var(--padding-btn);
+  padding-block: var(--space-xsmall);
 }
 
 /* Customized css */
@@ -227,9 +230,9 @@ select {
 }
 
 /* BUTTONS WITH ICON */
-/* Common csS */
+/* Common css */
 .icon-btn {
-  padding: var(--padding-btn);
+  padding: var(--space-xsmall);
   border: none;
   background-color: inherit;
   cursor: pointer;
@@ -238,7 +241,7 @@ select {
 /* Customized css */
 .favourite-btn {
   display: flex;
-  font-size: 1.5rem;
+  font-size: var(--font-size-icon-lg);
 }
 
 /* Customized css */
@@ -246,5 +249,5 @@ select {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 1rem;
+  font-size: var(--font-size-icon-sm);
 }

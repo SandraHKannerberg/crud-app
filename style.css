@@ -34,12 +34,17 @@ video {
   --clr-secondary: #181618;
 
   --space-base: 1.3rem;
+  --space-xsmall: 0.6rem;
   --space-small: 1rem;
   --space-medium: 2rem;
+  --space-lg: 4rem;
 
   --font-fam-primary: "Inconsolata", serif;
   --font-fam-secondary: "Karla", serif;
+  --font-size-icon-sm: 1rem;
+  --font-size-icon-lg: 1.5rem;
   --font-size-base: 1.2rem;
+  --font-size-medium: 2rem;
   --font-size-super-xl: 8rem;
   --font-weight-base: 400;
   --font-weight-thin: 200;
@@ -47,7 +52,10 @@ video {
   --font-style-base: normal;
   --font-style-italic: italic;
 
-  --padding-btn: 10px;
+  --border-radius-base: 1rem;
+  --border-radius-small: 5px;
+
+  --letter-spacing: 2px;
 }
 
 /* Common css */
