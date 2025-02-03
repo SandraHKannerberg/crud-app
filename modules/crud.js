@@ -87,11 +87,8 @@ export function updateFavouriteArtist(id) {
 
 // Toggle seenConcert
 export function updateSeenArtistConcert(artist) {
-  console.log(artist);
-
   // Change the boolean seenConcert
   artist.seenConcert = !artist.seenConcert;
-  console.log(artist.seenConcert);
 
   // Find the index
   const index = artistsList.indexOf(artist);
